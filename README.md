@@ -57,6 +57,10 @@ That is the point.
 
 ![CQL syntax highlighting in Visual Studio Code](https://raw.githubusercontent.com/XecureLogic/cql-logscale-syntax/main/images/screenshot-highlighting.png)
 
+Snippets expand a full query from a short prefix — type `signins` and press Tab:
+
+![CQL snippets in action](https://raw.githubusercontent.com/XecureLogic/cql-logscale-syntax/main/images/screenshot-highlighting.gif)
+
 ## Install
 
 From the Marketplace: search **CrowdStrike Query Language** and click Install.
