@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CrowdStrike Query Language",
+  "scopeName": "source.cql",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#regex" },
+    { "include": "#tags" },
+    { "include": "#constants" },
+    { "include": "#numbers" },
+    { "include": "#functions" },
+    { "include": "#controls" },
+    { "include": "#logical-operators" },
+    { "include": "#assignment" },
+    { "include": "#operators" },
+    { "include": "#fields" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.cql",
+          "begin": "//",
+          "end": "$",
+          "patterns": [
+            { "name": "constant.other.url.cql", "match": "https?://\\S+" }
+          ]
+        },
+        {
+          "name": "comment.block.cql",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.cql",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.cql", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "regex": {
+      "patterns": [
+        {
+          "name": "string.regexp.cql",
+          "match": "/(?:\\\\.|[^/\\\\\\n])+/[a-zA-Z]*"
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.cql",
+          "match": "#[A-Za-z_][\\w.]*"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.cql",
+          "match": "(?i)\\b(true|false|null)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.cql",
+          "match": "\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.cql",
+          "match": "\\b([A-Za-z_][\\w]*)\\s*(?=\\()"
+        }
+      ]
+    },
+    "controls": {
+      "patterns": [
+        {
+          "name": "keyword.control.cql",
+          "match": "\\b(case|match|default)\\b"
+        }
+      ]
+    },
+    "logical-operators": {
+      "patterns": [
+        {
+          "name": "keyword.control.logical.cql",
+          "match": "(?i)\\b(AND|OR|NOT|LIKE)\\b"
+        }
+      ]
+    },
+    "assignment": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.cql",
+          "match": ":="
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.control.pipe.cql",
+          "match": "\\|"
+        },
+        {
+          "name": "keyword.operator.comparison.cql",
+          "match": "(!=|<=|>=|=~|=|<|>)"
+        }
+      ]
+    },
+    "fields": {
+      "patterns": [
+        {
+          "name": "variable.other.field.cql",
+          "match": "\\b([A-Za-z_][\\w.\\[\\]]*)\\b(?=\\s*(?:=|!=|<|>|:=))"
+        }
+      ]
+    }
+  }
+}

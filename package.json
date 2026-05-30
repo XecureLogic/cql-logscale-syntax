@@ -1,0 +1,84 @@
+{
+  "name": "cql-logscale-syntax",
+  "displayName": "CrowdStrike Query Language (LogScale / Humio) Syntax",
+  "description": "A Visual Studio Code extension for CrowdStrike Query Language (CQL/LQL) in Falcon LogScale and Humio. Zero-runtime, fully auditable syntax highlighting and snippets — no executable code, no dependencies, no network access.",
+  "version": "1.0.5",
+  "publisher": "xecurelogic",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "author": {
+    "name": "XecureLogic",
+    "url": "https://xecurelogic.com"
+  },
+  "homepage": "https://xecurelogic.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XecureLogic/cql-logscale-syntax"
+  },
+  "bugs": {
+    "url": "https://github.com/XecureLogic/cql-logscale-syntax/issues"
+  },
+  "qna": "https://github.com/XecureLogic/cql-logscale-syntax/issues",
+  "sponsor": {
+    "url": "https://xecurelogic.com"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "logscale",
+    "humio",
+    "crowdstrike",
+    "cql",
+    "lql",
+    "siem",
+    "threat hunting",
+    "detection engineering",
+    "security",
+    "falcon"
+  ],
+  "galleryBanner": {
+    "color": "#0E1526",
+    "theme": "dark"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "cql",
+        "aliases": [
+          "CrowdStrike Query Language",
+          "LogScale Query Language",
+          "CQL",
+          "LQL"
+        ],
+        "extensions": [
+          ".cql",
+          ".lql",
+          ".humio"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/icon.png",
+          "dark": "./images/icon.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "cql",
+        "scopeName": "source.cql",
+        "path": "./syntaxes/cql.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "cql",
+        "path": "./snippets/cql.json"
+      }
+    ]
+  }
+}

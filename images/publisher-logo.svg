@@ -1,0 +1,14 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F3A30F"/>
+      <stop offset="0.40" stop-color="#F3A30F"/>
+      <stop offset="0.85" stop-color="#F3A30F" stop-opacity="0"/>
+      <stop offset="1" stop-color="#F3A30F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="800" height="280" rx="24" fill="#050814"/>
+  <text x="400" y="150" text-anchor="middle" font-family="Audiowide" font-size="62" letter-spacing="7" fill="#FFFFFF">XECURELOGIC</text>
+  <rect x="150" y="178" width="500" height="5" fill="#FFFFFF"/>
+  <rect x="150" y="190" width="500" height="5" fill="url(#gold)"/>
+</svg>

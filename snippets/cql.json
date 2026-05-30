@@ -1,0 +1,115 @@
+{
+  "Entra ID interactive sign-ins hunt": {
+    "prefix": ["entra-signins", "signins"],
+    "description": "Entra ID interactive sign-in hunt: filters, groupBy field set, sort",
+    "body": [
+      "// ${1:INTERACTIVE signIns}",
+      "#repo=\"${2:3pi_microsoft_entra_id}\"",
+      "#Vendor=\"microsoft\"",
+      "#event.dataset=\"entraid.signin\"",
+      "| user.email=\"${3:user@example.com}\"",
+      "| (",
+      "\tVendor.properties.isInteractive=true",
+      "\tor Vendor.properties.isInteractive=\"true\"",
+      "\tor Vendor.properties.isInteractive=\"True\"",
+      "\tor Vendor.properties.signInEventTypes[0]=\"interactiveUser\"",
+      "\tor Vendor.category=\"SignInLogs\"",
+      "\tor event.provider=\"SignInLogs\"",
+      ")",
+      "| groupBy([",
+      "\t#event.outcome,",
+      "\terror.code,",
+      "\tVendor.resultSignature,",
+      "\tsource.geo.country_name,",
+      "\tsource.ip,",
+      "\tVendor.properties.userAgent,",
+      "\tVendor.properties.uniqueTokenIdentifier,",
+      "\tVendor.properties.sessionId,",
+      "\tVendor.properties.appDisplayName,",
+      "\tVendor.properties.clientAppUsed,",
+      "\tVendor.properties.resourceDisplayName,",
+      "\tVendor.properties.authenticationRequirement,",
+      "\tVendor.properties.deviceDetail.displayName,",
+      "\tVendor.properties.deviceDetail.isManaged,",
+      "\tVendor.properties.deviceDetail.isCompliant",
+      "], function=count(), limit=max)",
+      "| sort(_count, order=desc, limit=max)$0"
+    ]
+  },
+  "Tag filter": {
+    "prefix": "tag",
+    "body": ["#${1:event_simpleName}=${2:ProcessRollup2}"],
+    "description": "Tag filter (most selective, place first)"
+  },
+  "groupBy aggregation": {
+    "prefix": "groupby",
+    "body": ["groupBy([${1:field}], function=${2:count(as=count)})"],
+    "description": "Aggregate events by one or more fields"
+  },
+  "count function": {
+    "prefix": "count",
+    "body": ["count(as=${1:count})"],
+    "description": "Count events"
+  },
+  "sort": {
+    "prefix": "sort",
+    "body": ["sort(${1:field}, order=${2|desc,asc|}, limit=${3:20})"],
+    "description": "Sort results"
+  },
+  "case statement": {
+    "prefix": "case",
+    "body": [
+      "case {",
+      "\t${1:condition} | ${2:field} := \"${3:value}\" ;",
+      "\t* | ${2:field} := \"${4:default}\"",
+      "}"
+    ],
+    "description": "Conditional case block"
+  },
+  "match statement": {
+    "prefix": "match",
+    "body": [
+      "${1:field} match {",
+      "\t${2:pattern} => ${3:result} ;",
+      "\t* => ${4:default}",
+      "}"
+    ],
+    "description": "Match block on a field"
+  },
+  "field assignment": {
+    "prefix": "assign",
+    "body": ["${1:newField} := ${2:expression}"],
+    "description": "Assign a value to a field"
+  },
+  "regex filter": {
+    "prefix": "regex",
+    "body": ["${1:field}=/${2:pattern}/${3|i,|}"],
+    "description": "Regular-expression filter"
+  },
+  "default value": {
+    "prefix": "default",
+    "body": ["default(field=${1:field}, value=${2:0})"],
+    "description": "Set a default value for a field"
+  },
+  "formatTime": {
+    "prefix": "formattime",
+    "body": ["${1:field} := formatTime(\"${2:%Y-%m-%d %H:%M:%S}\", field=${3:@timestamp}, timezone=${4:Z})"],
+    "description": "Format a timestamp field"
+  },
+  "table view": {
+    "prefix": "table",
+    "body": ["table([${1:field1}, ${2:field2}])"],
+    "description": "Render selected fields as a table"
+  },
+  "Skeleton hunt query": {
+    "prefix": "hunt",
+    "body": [
+      "// ${1:Description of the hunt}",
+      "#event_simpleName=${2:ProcessRollup2}",
+      "| ${3:ImageFileName}=/${4:pattern}/i",
+      "| groupBy([${5:ComputerName}], function=count(as=hits))",
+      "| sort(hits, order=desc, limit=${6:20})"
+    ],
+    "description": "Skeleton CQL hunt query in canonical order"
+  }
+}
