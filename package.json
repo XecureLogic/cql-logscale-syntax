@@ -2,7 +2,7 @@
   "name": "cql-logscale-syntax",
   "displayName": "CrowdStrike Query Language (LogScale / Humio) Syntax",
   "description": "A Visual Studio Code extension for CrowdStrike Query Language (CQL/LQL) in Falcon LogScale and Humio. Zero-runtime, fully auditable syntax highlighting and snippets — no executable code, no dependencies, no network access.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "xecurelogic",
   "license": "MIT",
   "icon": "images/icon.png",
