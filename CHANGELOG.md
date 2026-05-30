@@ -4,6 +4,11 @@ All notable changes to this extension are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.6] - 2026-05-29
+
+### Added
+- Animated demo (GIF) of snippet expansion in the README / Marketplace listing.
+
 ## [1.0.5] - 2026-05-29
 
 ### Added
