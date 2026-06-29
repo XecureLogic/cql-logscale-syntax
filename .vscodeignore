@@ -1,0 +1,15 @@
+.vscode/**
+.github/**
+.gitignore
+node_modules/**
+*.vsix
+sample.cql
+SECURITY.md
+CONTRIBUTING.md
+images/icon.svg
+images/icon-256.png
+images/publisher-logo.svg
+images/publisher-logo.png
+images/publisher-square.png
+images/publisher-logo-square.svg
+images/publisher-logo-square.png

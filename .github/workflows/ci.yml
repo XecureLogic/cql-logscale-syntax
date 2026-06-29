@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate all JSON files parse
+        run: |
+          set -e
+          for f in package.json language-configuration.json syntaxes/*.json snippets/*.json; do
+            echo "Checking $f"
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))"
+          done
+          echo "All JSON files are valid."
+
+      - name: Package extension
+        run: npx --yes @vscode/vsce package --out cql-logscale-highlighting.vsix
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cql-logscale-highlighting-vsix
+          path: cql-logscale-highlighting.vsix

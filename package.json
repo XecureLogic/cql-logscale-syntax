@@ -1,6 +1,6 @@
 {
-  "name": "cql-logscale-syntax",
-  "displayName": "CrowdStrike Query Language (LogScale / Humio) Syntax",
+  "name": "cql-logscale-highlighting",
+  "displayName": "CrowdStrike Query Language (CQL) for LogScale & Humio",
   "description": "A Visual Studio Code extension for CrowdStrike Query Language (CQL/LQL) in Falcon LogScale and Humio. Zero-runtime, fully auditable syntax highlighting and snippets — no executable code, no dependencies, no network access.",
   "version": "1.0.6",
   "publisher": "xecurelogic",
@@ -36,8 +36,13 @@
     "cql",
     "lql",
     "siem",
+    "ng-siem",
+    "next-gen siem",
+    "falcon logscale",
+    "logscale query language",
     "threat hunting",
     "detection engineering",
+    "syntax highlighting",
     "security",
     "falcon"
   ],

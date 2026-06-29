@@ -2,11 +2,15 @@
 
 <img src="https://raw.githubusercontent.com/XecureLogic/cql-logscale-syntax/main/images/icon.png" width="120" alt="CQL LogScale Syntax" />
 
-# CrowdStrike Query Language (LogScale / Humio) Syntax
+# CrowdStrike Query Language (CQL) for LogScale & Humio
 
 **Zero-runtime, fully auditable syntax highlighting and snippets for CrowdStrike Query Language (CQL/LQL).**
 
 Built and maintained by [XecureLogic](https://xecurelogic.com).
+
+[![Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/xecurelogic.cql-logscale-highlighting?label=Marketplace&color=0E1526)](https://marketplace.visualstudio.com/items?itemName=xecurelogic.cql-logscale-highlighting)
+[![CI](https://github.com/XecureLogic/cql-logscale-syntax/actions/workflows/ci.yml/badge.svg)](https://github.com/XecureLogic/cql-logscale-syntax/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 </div>
 
