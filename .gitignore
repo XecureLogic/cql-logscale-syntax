@@ -1,0 +1,4 @@
+# Local-only working files — not part of the published extension
+local/
+*.vsix
+node_modules/
