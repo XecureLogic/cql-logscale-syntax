@@ -7,11 +7,16 @@
     { "include": "#strings" },
     { "include": "#regex" },
     { "include": "#tags" },
+    { "include": "#metadata-fields" },
+    { "include": "#query-parameters" },
     { "include": "#constants" },
+    { "include": "#time-literals" },
     { "include": "#numbers" },
     { "include": "#functions" },
     { "include": "#controls" },
     { "include": "#logical-operators" },
+    { "include": "#named-parameters" },
+    { "include": "#field-list" },
     { "include": "#assignment" },
     { "include": "#operators" },
     { "include": "#fields" }
@@ -62,11 +67,35 @@
         }
       ]
     },
+    "metadata-fields": {
+      "patterns": [
+        {
+          "name": "variable.language.cql",
+          "match": "@[A-Za-z_][\\w.]*"
+        }
+      ]
+    },
+    "query-parameters": {
+      "patterns": [
+        {
+          "name": "variable.parameter.query.cql",
+          "match": "\\?[A-Za-z_]\\w*"
+        }
+      ]
+    },
     "constants": {
       "patterns": [
         {
           "name": "constant.language.cql",
           "match": "(?i)\\b(true|false|null)\\b"
+        }
+      ]
+    },
+    "time-literals": {
+      "patterns": [
+        {
+          "name": "constant.numeric.time.cql",
+          "match": "(?i)\\b\\d+(?:milliseconds?|millis|ms|seconds?|secs?|s|minutes?|min|m|hours?|hrs?|hr|h|days?|d|weeks?|w|months?|mon|quarters?|qtrs?|qtr|q|years?|yrs?|yr|y)\\b"
         }
       ]
     },
@@ -102,6 +131,44 @@
         }
       ]
     },
+    "named-parameters": {
+      "patterns": [
+        {
+          "name": "variable.parameter.cql",
+          "match": "(?i)\\b(function|as|field|fields|by|order|limit|span|unit|timezone|tz|format|separator|sep|buckets|series|method|percentiles|nboundaries|window|measure|strip|distinct|precision)\\b(?=\\s*=)"
+        }
+      ]
+    },
+    "field-list": {
+      "patterns": [
+        {
+          "begin": "\\[",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.list.begin.cql" }
+          },
+          "end": "\\]",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.list.end.cql" }
+          },
+          "patterns": [
+            { "include": "#comments" },
+            { "include": "#strings" },
+            { "include": "#regex" },
+            { "include": "#tags" },
+            { "include": "#metadata-fields" },
+            { "include": "#query-parameters" },
+            { "include": "#constants" },
+            { "include": "#time-literals" },
+            { "include": "#numbers" },
+            { "include": "#functions" },
+            { "include": "#logical-operators" },
+            { "include": "#named-parameters" },
+            { "include": "#operators" },
+            { "name": "variable.other.field.cql", "match": "[A-Za-z_][\\w.]*" }
+          ]
+        }
+      ]
+    },
     "assignment": {
       "patterns": [
         {
@@ -126,7 +193,7 @@
       "patterns": [
         {
           "name": "variable.other.field.cql",
-          "match": "\\b([A-Za-z_][\\w.\\[\\]]*)\\b(?=\\s*(?:=|!=|<|>|:=))"
+          "match": "\\b([A-Za-z_][\\w.]*(?:\\[\\d+\\])*)(?=\\s*(?::=|=~|!=|<=|>=|=|<|>))"
         }
       ]
     }

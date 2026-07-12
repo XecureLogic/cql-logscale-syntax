@@ -4,6 +4,32 @@ All notable changes to this extension are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-07-12
+
+### Added
+- Highlighting for LogScale **metadata fields** (`@timestamp`, `@rawstring`,
+  `@ingesttimestamp`, ...), **query/dashboard parameters** (`?name`), and
+  **relative-time literals** (`24h`, `7d`, `30m`, `1w`, ...).
+- **Field names inside list brackets** — `groupBy([...])`, `table([...])`,
+  `select([...])` — are now highlighted as fields.
+- **Named function parameters** (`function=`, `order=`, `limit=`, `span=`,
+  `as=`, ...) are now scoped distinctly from event fields.
+- Nine new snippets: `select`, `timechart`, `bucket`, `in`, `head`, `tail`,
+  `rename`, `format`, `worldmap`.
+- `onEnterRules` for block-comment (`/* */`) continuation.
+- **Grammar tokenization tests** (`vscode-tmgrammar-test`) with scope
+  assertions, run in CI on every push and pull request and locally via
+  `npm test`. The harness runs through `npx` — no runtime or install
+  dependencies are added to the extension.
+
+### Fixed
+- Field filters now also match dotted paths with array indexes
+  (e.g. `a.b.c[0]=`) and the `=~`, `<=`, and `>=` operators.
+
+### Removed
+- Internal `local/` notes and a stray `.vsix` are no longer packaged into the
+  published extension.
+
 ## [1.0.6] - 2026-05-29
 
 ### Added

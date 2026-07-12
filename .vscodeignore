@@ -3,6 +3,9 @@
 .gitignore
 node_modules/**
 *.vsix
+test/**
+local/**
+package-lock.json
 sample.cql
 SECURITY.md
 CONTRIBUTING.md

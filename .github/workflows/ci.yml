@@ -25,6 +25,9 @@ jobs:
           done
           echo "All JSON files are valid."
 
+      - name: Test grammar tokenization (scope assertions)
+        run: npx --yes vscode-tmgrammar-test "test/**/*.cql"
+
       - name: Package extension
         run: npx --yes @vscode/vsce package --out cql-logscale-highlighting.vsix
 

@@ -10,6 +10,7 @@ no build step, no runtime code — so contributions are easy to review.
 - `snippets/cql.json` — code snippets
 - `package.json` — the extension manifest
 - `sample.cql` — a sample query for eyeballing highlighting changes
+- `test/grammar.cql` — scope-assertion tests for the grammar
 
 ## Making a change
 
@@ -18,14 +19,19 @@ no build step, no runtime code — so contributions are easy to review.
    ```sh
    node -e "JSON.parse(require('fs').readFileSync('syntaxes/cql.tmLanguage.json','utf8'))"
    ```
-3. Try it locally: open this folder in VS Code and press `F5` to launch an
+3. Run the grammar tests (via `npx`, no dependencies to install):
+   ```sh
+   npm test
+   ```
+4. Try it locally: open this folder in VS Code and press `F5` to launch an
    Extension Development Host, then open `sample.cql` to see your changes.
-4. Package it to confirm it builds cleanly:
+5. Package it to confirm it builds cleanly:
    ```sh
    npx @vscode/vsce package
    ```
 
-CI runs the same JSON validation and packaging step on every pull request.
+CI runs the same JSON validation, grammar tests, and packaging step on every
+pull request.
 
 ## Grammar guidelines
 
@@ -34,7 +40,8 @@ CI runs the same JSON validation and packaging step on every pull request.
   referenced from the top-level `patterns` array in the right position.
 - Keep scope names conventional (`keyword.control.*`, `string.regexp.*`, etc.)
   so they pick up coloring from standard themes.
-- Add a representative line to `sample.cql` for any new construct you highlight.
+- Add a representative line to `sample.cql` for any new construct you highlight,
+  and a scope assertion to `test/grammar.cql` so the behavior is pinned.
 
 ## Reporting bugs
 

@@ -101,6 +101,51 @@
     "body": ["table([${1:field1}, ${2:field2}])"],
     "description": "Render selected fields as a table"
   },
+  "select fields": {
+    "prefix": "select",
+    "body": ["select([${1:field1}, ${2:field2}])"],
+    "description": "Keep only the listed fields on each event"
+  },
+  "timeChart over time": {
+    "prefix": "timechart",
+    "body": ["timeChart(function=${1:count()}, span=${2:1h})"],
+    "description": "Bucket events over time for a time-chart widget"
+  },
+  "bucket": {
+    "prefix": "bucket",
+    "body": ["bucket(span=${1:1h}, function=${2:count()})"],
+    "description": "Group events into time buckets and aggregate"
+  },
+  "in list filter": {
+    "prefix": "in",
+    "body": ["in(${1:field}, values=[${2:\"value1\", \"value2\"}])"],
+    "description": "Match a field against a list of values (wildcards allowed)"
+  },
+  "head (oldest N)": {
+    "prefix": "head",
+    "body": ["head(${1:20})"],
+    "description": "Return the oldest N events"
+  },
+  "tail (newest N)": {
+    "prefix": "tail",
+    "body": ["tail(${1:20})"],
+    "description": "Return the most recent N events"
+  },
+  "rename field": {
+    "prefix": "rename",
+    "body": ["rename(field=${1:oldName}, as=${2:newName})"],
+    "description": "Rename a field"
+  },
+  "format string": {
+    "prefix": "format",
+    "body": ["format(format=\"${1:%s}\", field=[${2:field}], as=${3:formatted})"],
+    "description": "Build a printf-style formatted string into a new field"
+  },
+  "worldMap": {
+    "prefix": "worldmap",
+    "body": ["worldMap(ip=${1:source.ip})"],
+    "description": "Bucket IPs/geo-coordinates for the World Map widget"
+  },
   "Skeleton hunt query": {
     "prefix": "hunt",
     "body": [

@@ -9,3 +9,10 @@
   }
 | groupBy([ComputerName], function=count(as=hits))
 | sort(hits, order=desc, limit=20)
+
+// Metadata fields, query parameters, and relative-time / named-parameter forms
+#repo=?repo
+| @timestamp > 24h
+| in(UserName, values=["SYSTEM", "root"])
+| timeChart(function=count(), span=1h)
+| formatTime("%Y-%m-%d", field=@timestamp, timezone=Z)

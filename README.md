@@ -33,15 +33,26 @@ The entire package is a handful of small JSON files you can read in under five
 minutes. Clone the repository, inspect every byte, and decide for yourself.
 That is the point.
 
+The grammar is covered by scope-assertion tests (`vscode-tmgrammar-test`) that
+run in CI on every change, so highlighting behavior is pinned and regressions
+are caught automatically. The test harness runs through `npx` — it adds **no**
+runtime or install dependencies to the extension.
+
 ## Features
 
 - **Syntax highlighting** for CQL/LQL: comments, strings, regex literals, tag
-  fields (`#event_simpleName`), function calls, `case` / `match` / `default`
-  constructs, logical operators (`AND` / `OR` / `NOT`), assignment (`:=`),
-  comparisons, the pipe operator, numbers, and constants.
+  fields (`#event_simpleName`), metadata fields (`@timestamp`, `@rawstring`),
+  query/dashboard parameters (`?name`), function calls, named parameters
+  (`function=`, `order=`), `case` / `match` / `default` constructs, logical
+  operators (`AND` / `OR` / `NOT`), assignment (`:=`), comparisons, the pipe
+  operator, relative-time literals (`24h`, `7d`), numbers, and constants.
+  Field names inside list brackets (`groupBy([...])`, `table([...])`) are
+  highlighted too.
 - **Snippets** for common patterns — tag filters, `groupBy`, `case`, regex
-  filters, `formatTime`, `sort`, and a full hunt-query skeleton in canonical
-  query order. Type `hunt`, `groupby`, `case`, `regex`, and others.
+  filters, `formatTime`, `sort`, `timechart`, `bucket`, `in`, `select`,
+  `head` / `tail`, `rename`, `format`, `worldmap`, and a full hunt-query
+  skeleton in canonical query order. Type `hunt`, `groupby`, `case`, `regex`,
+  and others.
 - **Editor behavior** — comment toggling, bracket matching, auto-closing pairs,
   region folding (`// #region` / `// #endregion`), and block indentation.
 - **File associations** — `.cql`, `.lql`, `.humio`. For any other file, set the
